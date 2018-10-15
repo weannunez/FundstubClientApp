@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FundstubClientApp</string>
+    <string name="rating_submitted_successfully">Sucess</string>
 </resources>
