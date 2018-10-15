@@ -1,0 +1,31 @@
+package com.bbdev.app.fundstubclientapp.util
+
+import android.content.Context
+import android.util.DisplayMetrics
+import android.view.WindowManager
+
+/**
+ * Created by wn 09/01000.
+ */
+object ScreenUtils {
+
+    fun getScreenWidth(context: Context): Int {
+        val windowManager = context
+                .getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        windowManager.let {
+            val dm = DisplayMetrics()
+            it.defaultDisplay.getMetrics(dm)
+            return dm.widthPixels
+        }
+    }
+
+    fun getScreenHeight(context: Context): Int {
+        val windowManager = context
+                .getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        windowManager.let {
+            val dm = DisplayMetrics()
+            it.defaultDisplay.getMetrics(dm)
+            return dm.heightPixels
+        }
+    }
+}
