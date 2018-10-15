@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "896697271085",
+    "firebase_url": "https://fundstub-api.firebaseio.com",
+    "project_id": "fundstub-api",
+    "storage_bucket": "fundstub-api.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:896697271085:android:6ceac28b6babcadc",
+        "android_client_info": {
+          "package_name": "com.bbdev.app.fundstubclientapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "896697271085-m6esqn9akg4p7esle5b1m7a1591jteto.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bbdev.app.fundstubclientapp",
+            "certificate_hash": "c75d875c4b4f811e37462f48d79e809d6490b855"
+          }
+        },
+        {
+          "client_id": "896697271085-qe3ipjk9l4kt3pc3c0n5e41tgie7mv5c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCE0dsBJ6a_iXIhqAN_Whrfw2iKxfONLOc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "896697271085-qe3ipjk9l4kt3pc3c0n5e41tgie7mv5c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
