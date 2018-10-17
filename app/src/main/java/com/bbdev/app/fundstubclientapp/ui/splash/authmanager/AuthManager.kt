@@ -1,65 +1,74 @@
 package com.bbdev.app.fundstubclientapp.ui.splash.authmanager
 
-import android.content.Context
-import com.bbdev.app.fundstubclientapp.ui.splash.interactor.SplashMVPInteractor
-import com.bbdev.app.fundstubclientapp.ui.splash.presenter.SplashMVPPresenter
-import com.bbdev.app.fundstubclientapp.ui.splash.view.SplashMVPActivity
-import com.bbdev.app.fundstubclientapp.ui.splash.view.SplashMVPView
+
+import android.util.Log
+import com.bbdev.app.fundstubclientapp.App
+import com.bbdev.app.fundstubclientapp.data.dataclass.User
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
+import java.lang.ref.WeakReference
+import javax.inject.Inject
 
-class AuthManager : AuthManagerMvp.Manager{
 
-    private var view: SplashMVPView = SplashMVPActivity()
-    private var auth = FirebaseAuth.getInstance()
-    private var user: FirebaseUser = auth.currentUser!!
+class AuthManager private constructor(){
 
+    @Inject lateinit var session: Session
+    private val callbacks: MutableMap<AccessChangedListener, WeakReference<FirebaseAuth.AuthStateListener>>
+    private val fireBaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+    private val firebaseFirestore: FirebaseFirestore = FirebaseFirestore.getInstance()
+    private val firebaseDatabase: FirebaseDatabase = FirebaseDatabase.getInstance()
 
-    private fun authManager(auth: FirebaseAuth, user: FirebaseUser){
-        var auth = FirebaseAuth.getInstance()
-        this.user = user
+    init {
+        callbacks = HashMap<AccessChangedListener, WeakReference<FirebaseAuth.AuthStateListener>>()
+        App.instance.component.inject(this)
+    }
 
-        if(user == null){
-            handleNullUser()
-
-        }else{
-
-            handleAuthUser()
+    fun addAccessChangedListener(accessChangedListener: AccessChangedListener){
+        val auth = FirebaseAuth.AuthStateListener {
+            val user = session.getCurrentUser()
+            accessChangedListener.accessChanged(user != null)
         }
-
+        fireBaseAuth.addAuthStateListener(auth)
+        callbacks.put(accessChangedListener, WeakReference(auth))
     }
 
-    private fun handleAuthUser() {
-        view.openMainActivity()
+    fun removeAccessChangedListener(accessChangedListener: AccessChangedListener){
+        val listener = callbacks[accessChangedListener]?.get()
+        if(listener != null){
+            fireBaseAuth.removeAuthStateListener(listener)
+            callbacks.remove(accessChangedListener)
+        }
     }
 
-    private fun handleNullUser() {
-        view.openLoginActivity()
+    fun isCurrentUserAuth(): User? = session.getCurrentUser()
+
+
+    fun logout(){
+        fireBaseAuth.signOut()
     }
 
-    override fun initializeBackendServices(view: SplashMVPView, presenter: SplashMVPPresenter<SplashMVPView, SplashMVPInteractor>) {
-       authManager(auth, user)
+    fun saveUserInputData(user: User):Task<Void> {
+        return firebaseDatabase.getReference("writes/${user.uid}/registrationData/").setValue(user)
+    }
+    fun performSignIn(email: String, password: String): Task<AuthResult> {
+        return fireBaseAuth.signInWithEmailAndPassword(email, password)
+
+    }
+    fun performCreateNewUser(email: String, password: String, name: String): Task<AuthResult>{
+        return fireBaseAuth.createUserWithEmailAndPassword(email, password)
     }
 
-    override fun onAttach(context: Context) {
-        view.showSuccessToast()
+    interface AccessChangedListener{
+        fun accessChanged(hasAccess: Boolean)
     }
 
-    override fun initializeDatabase() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    companion object {
+        val instance by lazy {   AuthManager() }
     }
-
-    override fun getCurrentUserId() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun authenticateCurrentUser() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun updateUserSettings() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
 
 }

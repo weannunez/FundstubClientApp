@@ -1,36 +1,105 @@
 package com.bbdev.app.fundstubclientapp.ui.splash.presenter
 
-import com.bbdev.app.fundstubclientapp.ui.splash.interactor.SplashInteractor
-import com.bbdev.app.fundstubclientapp.ui.splash.interactor.SplashMVPInteractor
-import com.bbdev.app.fundstubclientapp.ui.splash.view.SplashMVPActivity
+import android.text.TextUtils
+import com.bbdev.app.fundstubclientapp.App
+import com.bbdev.app.fundstubclientapp.data.dataclass.User
+import com.bbdev.app.fundstubclientapp.ui.splash.authmanager.AuthManager
 import com.bbdev.app.fundstubclientapp.ui.splash.view.SplashMVPView
+import javax.inject.Inject
 
 
 /**
  * Created by wn 04/01000.
  */
-class SplashPresenter: SplashMVPPresenter<SplashMVPView, SplashMVPInteractor>{
-
-    private var view: SplashMVPView = SplashMVPActivity()
-    private var interactor: SplashMVPInteractor = SplashInteractor()
+class SplashPresenter: SplashMVPPresenter {
 
 
+    @Inject
+    lateinit var authManager: AuthManager
+    private lateinit var view: SplashMVPView
 
-    override fun onAttach(view: SplashMVPView?) {
-        view?.showSuccessToast()
+    init {
+        App.instance.component.inject(this)
     }
+
+    override fun onAttach(view: SplashMVPView) {
+        this.view = view
+    }
+
+    override fun isAuthenticated(): Boolean {
+        return authManager.isCurrentUserAuth() != null
+    }
+
+    override fun verifyUserInputs(name: String,email: String, password: String) {
+        if(TextUtils.isEmpty(name)){
+            view.hideProgress()
+            view.showError("Name cannot be empty")
+        }
+        if (TextUtils.isEmpty(email)) {
+            view.hideProgress()
+            view.showError("Email cannot be empty")
+        }
+        if (TextUtils.isEmpty(password)) {
+            view.hideProgress()
+            view.showError("Password cannot be empty")
+        } else {
+            view.hideProgress()
+            performCreateNewUser(email, password, name)
+
+        }
+
+    }
+
+    private fun saveUser(user: User) {
+        authManager.saveUserInputData(user).addOnCompleteListener {
+            if (it.isSuccessful){
+                view.openHomeActivity()
+            }else{
+                view.hideProgress()
+                view.showError(it.exception.toString())
+            }
+        }
+    }
+
+    private fun performCreateNewUser(email: String, password: String, name: String) {
+       view.showProgress()
+       authManager.performCreateNewUser(email, password, name).addOnCompleteListener {
+            if (it.isSuccessful){
+                val uid = it.result.user.uid
+                val user = User(uid, email, name)
+                saveUser(user)
+            }else{
+                view.showError(it.exception.toString())
+            }
+        }
+    }
+
 
     override fun onDetach() {
-        view.openLoginActivity()
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun getView(): SplashMVPView?{
-        return null
+    override fun subscribe() {
+        if (!isAuthenticated()) {
+            authManager.removeAccessChangedListener(mAuthStateListener)
+        } else {
+            authManager.addAccessChangedListener(mAuthStateListener)
+        }
     }
 
+    override fun unSubscribe() {
+        authManager.removeAccessChangedListener(mAuthStateListener)
+    }
 
-    private fun onMorings (){
+    override fun performLogout() {
+        authManager.logout()
+    }
 
-        view.openMainActivity()
+    private val mAuthStateListener = object : AuthManager.AccessChangedListener{
+        override fun accessChanged(hasAccess: Boolean) {
+            if(!hasAccess){
+                view.openLoginActivity()
+            }
+        }
     }
 }

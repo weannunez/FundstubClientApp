@@ -1,5 +1,6 @@
 package com.bbdev.app.fundstubclientapp.ui.splash.view
 
+import com.bbdev.app.fundstubclientapp.data.dataclass.User
 import com.bbdev.app.fundstubclientapp.ui.base.view.MVPView
 
 /**
@@ -7,8 +8,9 @@ import com.bbdev.app.fundstubclientapp.ui.base.view.MVPView
  */
 interface SplashMVPView : MVPView {
 
-    fun showSuccessToast()
-    fun showErrorToast()
-    fun openMainActivity()
+    fun showErrorToast(err: String)
+    fun showUserInfo(user: User)
+    fun showError(err: String)
+    fun openHomeActivity()
     fun openLoginActivity()
 }

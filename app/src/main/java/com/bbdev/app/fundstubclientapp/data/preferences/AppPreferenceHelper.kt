@@ -9,6 +9,15 @@ import com.bbdev.app.fundstubclientapp.util.AppConstants
  * Created by wn 04/01000.
  */
 class AppPreferenceHelper (context: Context, val prefFileName: String) : PreferenceHelper {
+
+    companion object {
+        private val PREF_KEY_USER_LOGGED_IN_MODE = "PREF_KEY_USER_LOGGED_IN_MODE"
+        private val PREF_KEY_CURRENT_USER_ID = "PREF_KEY_CURRENT_USER_ID"
+        private val PREF_KEY_ACCESS_TOKEN = "PREF_KEY_ACCESS_TOKEN"
+        private val PREF_KEY_CURRENT_USER_NAME = "PREF_KEY_CURRENT_USER_NAME"
+        private val PREF_KEY_CURRENT_USER_EMAIL = "PREF_KEY_CURRENT_USER_EMAIL"
+    }
+
     override fun setCurrentUserId(userId: Long?) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -24,15 +33,6 @@ class AppPreferenceHelper (context: Context, val prefFileName: String) : Prefere
     override fun setCurrentUserLoggedInMode(mode: AppConstants.LoggedInMode) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
-
-    companion object {
-        private val PREF_KEY_USER_LOGGED_IN_MODE = "PREF_KEY_USER_LOGGED_IN_MODE"
-        private val PREF_KEY_CURRENT_USER_ID = "PREF_KEY_CURRENT_USER_ID"
-        private val PREF_KEY_ACCESS_TOKEN = "PREF_KEY_ACCESS_TOKEN"
-        private val PREF_KEY_CURRENT_USER_NAME = "PREF_KEY_CURRENT_USER_NAME"
-        private val PREF_KEY_CURRENT_USER_EMAIL = "PREF_KEY_CURRENT_USER_EMAIL"
-    }
-
     private val mPrefs: SharedPreferences = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE)
 
     override fun getCurrentUserLoggedInMode() = mPrefs.getInt(PREF_KEY_USER_LOGGED_IN_MODE, AppConstants.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT.type)

@@ -1,9 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
-                                             xmlns:tools="http://schemas.android.com/tools"
-                                             tools:context=".ui.splash.view.SplashMVPActivity">
+                                             android:background="@drawable/gradient"
+                                             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+                                             tools:context=".ui.splash.view.SplashMVPActivity"
+                                             android:id="@+id/constraintLayout">
 
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="splash"/>
+    <ImageView
+            android:layout_width="319dp"
+            android:layout_height="131dp" app:srcCompat="@mipmap/slogi"
+            android:id="@+id/imageView" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
+            app:layout_constraintVertical_bias="0.139"/>
+    <Button
+            android:text="Create new account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/new_user_btn" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.608" android:backgroundTint="@color/md_deep_purple_600"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
+            android:textColor="@android:color/background_light"
+            android:shadowColor="@color/common_google_signin_btn_text_dark_focused"
+            app:layout_constraintHorizontal_bias="0.498" android:visibility="gone"/>
+    <Button
+            android:text="Already have an account?"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/current_user_btn" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/new_user_btn" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintVertical_bias="0.563"
+            android:backgroundTint="@color/common_google_signin_btn_text_dark_focused"
+            style="@android:style/Widget.Material.Button.Borderless" app:layout_constraintHorizontal_bias="0.5"
+            android:visibility="gone"/>
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/splash_email_input" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/splash_password_input" app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="1.0" android:hint="Email" android:visibility="gone"/>
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/splash_password_input"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintVertical_bias="0.385" android:hint="Password" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" android:visibility="gone"/>
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/splash_name_input" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/splash_email_input" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" app:layout_constraintVertical_bias="1.0"
+            android:hint="Full Name" android:visibility="gone"/>
+    <Button
+            android:text="Create Account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/splash_register_btn" android:backgroundTint="@color/md_deep_purple_400"
+            android:textColor="#fff" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintHorizontal_bias="1.0" app:layout_constraintVertical_bias="0.52"
+            android:visibility="gone"/>
+    <Button
+            android:text="Sign In"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/splash_signin_btn" android:backgroundTint="@color/md_deep_purple_400"
+            android:textColor="#fff" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintHorizontal_bias="1.0" app:layout_constraintVertical_bias="0.52"
+            android:visibility="gone"/>
 </android.support.constraint.ConstraintLayout>

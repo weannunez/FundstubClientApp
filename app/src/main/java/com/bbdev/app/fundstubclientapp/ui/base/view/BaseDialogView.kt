@@ -22,7 +22,6 @@ abstract class BaseDialogView : DialogFragment(), DialogMVPView {
         if (context is BaseActivity) {
             val activity = context as BaseActivity?
             this.parentActivity = activity
-            activity?.onFragmentAttached()
         }
     }
 
@@ -59,7 +58,6 @@ abstract class BaseDialogView : DialogFragment(), DialogMVPView {
 
     fun dismissDialog(tag: String) {
         dismiss()
-        getBaseActivity()?.onFragmentDetached(tag)
     }
 
     private fun getBaseActivity(): BaseActivity? {

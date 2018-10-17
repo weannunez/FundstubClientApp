@@ -9,6 +9,7 @@ import com.bbdev.app.fundstubclientapp.util.AppConstants
  */
 open class BaseInteractor() : MVPInteractor {
 
+
     protected lateinit var preferenceHelper: PreferenceHelper
     protected lateinit var apiHelper: ApiHelper
 
@@ -17,7 +18,6 @@ open class BaseInteractor() : MVPInteractor {
         this.apiHelper = apiHelper
     }
 
-    override fun isUserLoggedIn() = this.preferenceHelper.getCurrentUserLoggedInMode() != AppConstants.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT.type
 
     override fun performUserLogout() = preferenceHelper.let {
         it.setCurrentUserId(null)
@@ -25,5 +25,7 @@ open class BaseInteractor() : MVPInteractor {
         it.setCurrentUserEmail(null)
         it.setCurrentUserLoggedInMode(AppConstants.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT)
     }
-
+    override fun isUserLoggedIn(msg: String) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 }

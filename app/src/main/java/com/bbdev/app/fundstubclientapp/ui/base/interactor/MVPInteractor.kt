@@ -5,7 +5,7 @@ package com.bbdev.app.fundstubclientapp.ui.base.interactor
  */
 interface MVPInteractor {
 
-    fun isUserLoggedIn(): Boolean
+    fun isUserLoggedIn(msg : String)
 
     fun performUserLogout()
 

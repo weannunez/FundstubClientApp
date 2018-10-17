@@ -3,20 +3,23 @@ package com.bbdev.app.fundstubclientapp.ui.base.view
 import android.app.ProgressDialog
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.bbdev.app.fundstubclientapp.ui.splash.presenter.SplashMVPPresenter
 import com.bbdev.app.fundstubclientapp.util.CommonUtil
 import dagger.android.AndroidInjection
+import javax.inject.Inject
 
 /**
  * Created by wn 04/01000.
  */
-abstract class BaseActivity : AppCompatActivity(), MVPView, BaseFragment.CallBack {
+abstract class BaseActivity : AppCompatActivity(), MVPView{
+
 
     private var progressDialog: ProgressDialog? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
-
     override fun hideProgress() {
         progressDialog?.let { if (it.isShowing) it.cancel() }
     }
@@ -25,6 +28,9 @@ abstract class BaseActivity : AppCompatActivity(), MVPView, BaseFragment.CallBac
         hideProgress()
         progressDialog = CommonUtil.showLoadingDialog(this)
     }
+
+
+
 
 
 }

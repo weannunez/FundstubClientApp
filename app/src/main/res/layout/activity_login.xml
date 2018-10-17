@@ -5,10 +5,48 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.login.view.LoginActivity">
+        tools:context=".ui.login.LoginActivity">
 
+    <EditText android:layout_width="0dp" android:layout_height="53dp"
+              android:id="@+id/input_email" android:hint="Email" android:inputType="textEmailAddress"
+              style="@android:style/Widget.Material.EditText" android:layout_marginBottom="8dp"
+              app:layout_constraintBottom_toTopOf="@+id/input_email2" android:layout_marginTop="8dp"
+              app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
+              android:layout_marginEnd="8dp" app:layout_constraintVertical_bias="1.0"
+              app:layout_constraintHorizontal_bias="0.0"/>
     <EditText android:layout_width="match_parent" android:layout_height="55dp"
-    android:id="@+id/input_email" android:hint="Email"/>
+              android:id="@+id/input_email2" android:hint="Password" android:inputType="textPassword"
+              android:selectAllOnFocus="true" style="@android:style/Widget.Material.EditText"
+              app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+              android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintHorizontal_bias="0.0" app:layout_constraintTop_toTopOf="parent"
+              android:layout_marginTop="8dp" app:layout_constraintBottom_toBottomOf="parent"
+              android:layout_marginBottom="8dp" app:layout_constraintVertical_bias="0.59"/>
+    <Button
+            android:text="New User"
+            android:layout_width="190dp"
+            android:layout_height="55dp"
+            android:id="@+id/register_btn" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toTopOf="@+id/sign_in_btn"
+            android:layout_marginStart="8dp" app:layout_constraintBottom_toBottomOf="@+id/sign_in_btn"
+            android:elevation="20dp" style="@android:style/Widget.Material.Button.Colored"
+            android:background="#8100cc" android:backgroundTint="?attr/colorPrimary"/>
+    <Button
+            android:text="Sign In"
+            android:layout_width="190dp"
+            android:layout_height="55dp"
+            android:id="@+id/sign_in_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp" app:layout_constraintStart_toEndOf="@+id/register_btn"
+            android:layout_marginStart="16dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/input_email2" app:layout_constraintHorizontal_bias="1.0"
+            android:elevation="20dp" style="@android:style/Widget.Material.Button.Colored"
+            android:backgroundTint="@color/common_google_signin_btn_text_dark_focused" android:ellipsize="middle"
+            android:background="#0a0317" android:layout_marginEnd="8dp" app:layout_constraintVertical_bias="1.0"/>
 
 
 </android.support.constraint.ConstraintLayout>
