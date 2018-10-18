@@ -15,14 +15,13 @@ import com.bbdev.app.fundstubclientapp.ui.home.HomeActivity
 import com.bbdev.app.fundstubclientapp.ui.login.LoginActivity
 import com.bbdev.app.fundstubclientapp.ui.splash.presenter.SplashMVPPresenter
 import com.bbdev.app.fundstubclientapp.ui.splash.presenter.SplashPresenter
-import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashMVPActivity : BaseActivity(), SplashMVPView {
 
     private lateinit var presenter: SplashMVPPresenter
-    private val ANIMATION_DURATION:Long = 4000
-    private lateinit var auth: FirebaseAuth
+    private val ANIMATION_DURATION:Long = 3000
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,41 +33,22 @@ class SplashMVPActivity : BaseActivity(), SplashMVPView {
         setHiddenBtnsClickListeners()
     }
 
-    override fun showErrorToast(err: String) {
-        showCreateUserError(err)
-    }
-
-    fun showCreateUserError(err:String){
-        Toast.makeText(this, err, Toast.LENGTH_LONG).show()
-    }
-    override fun showError(err: String) {
-        showEmailInputError(err)
-        showPasswordInputError(err)
-        showNameInputError(err)
-    }
-    fun showNameInputError(err: String){
-        splash_name_input.error = err
-    }
-    fun showEmailInputError(err: String){
-        splash_email_input.error = err
-    }
-
-    fun showPasswordInputError(err: String){
-        splash_password_input.error = err
-    }
 
     override fun openHomeActivity() {
         homeActivity()
     }
+
+    override fun openLoginActivity() {
+        loginActivity()
+    }
+
+
     private fun homeActivity(){
         val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
         finish()
     }
 
-    override fun openLoginActivity() {
-        loginActivity()
-    }
 
     private fun loginActivity(){
         val intent = Intent(this, LoginActivity::class.java)
@@ -218,7 +198,28 @@ class SplashMVPActivity : BaseActivity(), SplashMVPView {
 
     }
 
+    override fun showErrorToast(err: String) {
+        showCreateUserError(err)
+    }
 
+    private fun showCreateUserError(err:String){
+        Toast.makeText(this, err, Toast.LENGTH_LONG).show()
+    }
+    override fun showError(err: String) {
+        showEmailInputError(err)
+        showPasswordInputError(err)
+        showNameInputError(err)
+    }
+    private fun showNameInputError(err: String){
+        splash_name_input.error = err
+    }
+    private fun showEmailInputError(err: String){
+        splash_email_input.error = err
+    }
+
+    private fun showPasswordInputError(err: String){
+        splash_password_input.error = err
+    }
 
 
 }

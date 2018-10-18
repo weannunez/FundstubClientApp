@@ -15,13 +15,7 @@ class MainActivity : BaseActivity(), MainMVPView, NavigationView.OnNavigationIte
         setContentView(R.layout.activity_main)
     }
 
-    override fun onFragmentAttached() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
-    override fun onFragmentDetached(tag: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
     override fun inflateUserDetails(userDetails: Pair<String?, String?>) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -56,5 +50,7 @@ class MainActivity : BaseActivity(), MainMVPView, NavigationView.OnNavigationIte
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+
+
 
 }

@@ -25,7 +25,7 @@ class LoginActivity : BaseActivity(), LoginMvpView {
     }
 
 
-    fun setClickisteners(){
+    private fun setClickisteners(){
         sign_in_btn.setOnClickListener {
             this.showProgress()
             presenter.verifyUserInputs(input_email.text.toString(), input_email2.text.toString()) }
@@ -36,10 +36,10 @@ class LoginActivity : BaseActivity(), LoginMvpView {
         showPasswordError(err)
     }
 
-    fun showPasswordError(err: String){
+    private fun showPasswordError(err: String){
         input_email2.error = err
     }
-    fun showEmailError(err: String){
+    private fun showEmailError(err: String){
         input_email.error = err
     }
 

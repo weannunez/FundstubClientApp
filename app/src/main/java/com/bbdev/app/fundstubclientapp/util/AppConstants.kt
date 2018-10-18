@@ -6,10 +6,8 @@ package com.bbdev.app.fundstubclientapp.util
  */
 object AppConstants {
 
-    internal val APP_DB_NAME = "mindorks_mvp.db"
-    internal val PREF_NAME = "mindorks_pref"
-    internal val SEED_DATABASE_QUESTIONS = "seed/questions.json"
-    internal val SEED_DATABASE_OPTIONS = "seed/options.json"
+    internal val APP_DB_NAME = "firebase.db"
+    internal val PREF_NAME = "fundstub_prefs"
     internal val EMPTY_EMAIL_ERROR = 1001
     internal val INVALID_EMAIL_ERROR = 1002
     internal val EMPTY_PASSWORD_ERROR = 1003

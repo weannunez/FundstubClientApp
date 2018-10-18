@@ -3,6 +3,7 @@ package com.bbdev.app.fundstubclientapp.di
 import com.bbdev.app.fundstubclientapp.App
 import com.bbdev.app.fundstubclientapp.ui.base.view.BaseActivity
 import com.bbdev.app.fundstubclientapp.ui.home.HomeActivity
+import com.bbdev.app.fundstubclientapp.ui.home.HomePresenter
 import com.bbdev.app.fundstubclientapp.ui.login.LoginActivity
 import com.bbdev.app.fundstubclientapp.ui.login.LoginPresenter
 import com.bbdev.app.fundstubclientapp.ui.splash.authmanager.AuthManager
@@ -28,5 +29,7 @@ interface AppComponent{
     fun inject(presenter: SplashPresenter)
 
     fun inject(authManager: AuthManager)
+
+    fun inject(presenter: HomePresenter)
 
 }

@@ -17,10 +17,9 @@ class AppPreferenceHelper (context: Context, val prefFileName: String) : Prefere
         private val PREF_KEY_CURRENT_USER_NAME = "PREF_KEY_CURRENT_USER_NAME"
         private val PREF_KEY_CURRENT_USER_EMAIL = "PREF_KEY_CURRENT_USER_EMAIL"
     }
+    private val mPrefs: SharedPreferences = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE)
 
-    override fun setCurrentUserId(userId: Long?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun setCurrentUserId(userId: Long?){}
 
     override fun setCurrentUserEmail(email: String?) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -33,7 +32,6 @@ class AppPreferenceHelper (context: Context, val prefFileName: String) : Prefere
     override fun setCurrentUserLoggedInMode(mode: AppConstants.LoggedInMode) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
-    private val mPrefs: SharedPreferences = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE)
 
     override fun getCurrentUserLoggedInMode() = mPrefs.getInt(PREF_KEY_USER_LOGGED_IN_MODE, AppConstants.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT.type)
 

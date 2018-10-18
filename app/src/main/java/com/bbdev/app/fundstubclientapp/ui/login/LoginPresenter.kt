@@ -38,7 +38,9 @@ class LoginPresenter: LoginMvpPresenter{
     fun performSignIn(email: String, password: String){
         authManager.performSignIn(email, password).addOnCompleteListener {
             if (it.isSuccessful){
-
+                view.hideProgress()
+                subscribe()
+                view.showHomePage()
             }else{
                 view.hideProgress()
                 view.showAuthErrorResult(it.exception.toString())
@@ -59,16 +61,10 @@ class LoginPresenter: LoginMvpPresenter{
             view.showInputError("Password cannot be empty")
         }
         else{
-            authManager.performSignIn(email, password).addOnCompleteListener {
-                if (it.isSuccessful){
-                    view.showHomePage()
-                    this.subscribe()
-                }else{
-                    view.showAuthErrorResult(it.exception.toString())
-                }
-            }
+            performSignIn(email, password)
 
         }
+
     }
 
 

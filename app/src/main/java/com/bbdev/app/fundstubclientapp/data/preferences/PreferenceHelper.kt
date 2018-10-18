@@ -17,7 +17,6 @@ interface PreferenceHelper {
 
     fun getCurrentUserName(): String
 
-
     fun getCurrentUserEmail(): String?
 
     fun setCurrentUserEmail(email: String?)

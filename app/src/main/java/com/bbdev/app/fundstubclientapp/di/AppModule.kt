@@ -3,6 +3,8 @@ package com.bbdev.app.fundstubclientapp.di
 import android.app.Application
 import android.content.Context
 import com.bbdev.app.fundstubclientapp.data.dataclass.User
+import com.bbdev.app.fundstubclientapp.ui.home.HomeMvpPresenter
+import com.bbdev.app.fundstubclientapp.ui.home.HomePresenter
 import com.bbdev.app.fundstubclientapp.ui.splash.authmanager.AuthManager
 import com.bbdev.app.fundstubclientapp.ui.splash.authmanager.FirebaseSession
 import com.bbdev.app.fundstubclientapp.ui.splash.authmanager.Session
@@ -33,6 +35,10 @@ class AppModule(private val application: Application){
         return SplashPresenter()
     }
 
+    @Provides
+    fun provideHomePresenter(): HomeMvpPresenter {
+        return HomePresenter()
+    }
     @Provides
     fun provideUser(): User? = AuthManager.instance.isCurrentUserAuth()
 

@@ -1,15 +1,12 @@
 package com.bbdev.app.fundstubclientapp.ui.splash.authmanager
 
 
-import android.util.Log
 import com.bbdev.app.fundstubclientapp.App
 import com.bbdev.app.fundstubclientapp.data.dataclass.User
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import java.lang.ref.WeakReference
 import javax.inject.Inject

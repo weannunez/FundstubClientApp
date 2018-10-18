@@ -16,6 +16,7 @@ class SplashPresenter: SplashMVPPresenter {
 
     @Inject
     lateinit var authManager: AuthManager
+
     private lateinit var view: SplashMVPView
 
     init {
@@ -34,6 +35,9 @@ class SplashPresenter: SplashMVPPresenter {
         if(TextUtils.isEmpty(name)){
             view.hideProgress()
             view.showError("Name cannot be empty")
+        }
+        if(TextUtils.isDigitsOnly(email)){
+            view.showError("Email is invalid")
         }
         if (TextUtils.isEmpty(email)) {
             view.hideProgress()
@@ -76,7 +80,7 @@ class SplashPresenter: SplashMVPPresenter {
 
 
     override fun onDetach() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        unSubscribe()
     }
 
     override fun subscribe() {
