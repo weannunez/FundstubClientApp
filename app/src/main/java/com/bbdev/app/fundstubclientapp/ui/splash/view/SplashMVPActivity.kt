@@ -22,7 +22,6 @@ class SplashMVPActivity : BaseActivity(), SplashMVPView {
     private lateinit var presenter: SplashMVPPresenter
     private val ANIMATION_DURATION:Long = 3000
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         App.instance.component.inject(this)

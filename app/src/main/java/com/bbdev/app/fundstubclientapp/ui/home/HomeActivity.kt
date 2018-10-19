@@ -11,6 +11,7 @@ import co.zsmb.materialdrawerkt.draweritems.divider
 import com.bbdev.app.fundstubclientapp.App
 import com.bbdev.app.fundstubclientapp.R
 import com.bbdev.app.fundstubclientapp.ui.base.view.BaseActivity
+import kotlinx.android.synthetic.main.activity_home.*
 import javax.inject.Inject
 
 
@@ -19,16 +20,19 @@ class HomeActivity : BaseActivity(), HomeMvpView {
     @Inject lateinit var presenter: HomeMvpPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        App.instance.component.inject(this)
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null){
             supportFragmentManager.beginTransaction().add(R.id.home_container, HomeFragment()).commit()
         }
-        App.instance.component.inject(this)
         setContentView(R.layout.activity_home)
+        setSupportActionBar(toolbar_home!!)
         presenter = HomePresenter()
         presenter.onAttach(this)
 
         setUpDrawer()
+
+
     }
 
     private fun setUpDrawer(){

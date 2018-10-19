@@ -69,7 +69,7 @@ class SplashPresenter: SplashMVPPresenter {
        view.showProgress()
        authManager.performCreateNewUser(email, password, name).addOnCompleteListener {
             if (it.isSuccessful){
-                val uid = it.result.user.uid
+                val uid = it.result!!.user.uid
                 val user = User(uid, email, name)
                 saveUser(user)
             }else{
