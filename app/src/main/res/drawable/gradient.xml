@@ -5,6 +5,6 @@
     <gradient
          android:type="linear"
          android:startColor="#fff"
-         android:centerColor="@color/colorAccenttwo"
+         android:centerColor="@color/light"
          android:endColor="@color/colorPrimarytwo"/>
 </shape>

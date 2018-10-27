@@ -1,7 +1,7 @@
 package com.bbdev.app.fundstubclientapp.ui.base.interactor
 
 import com.bbdev.app.fundstubclientapp.data.network.ApiHelper
-import com.bbdev.app.fundstubclientapp.data.preferences.PreferenceHelper
+import com.bbdev.app.fundstubclientapp.ui.base.preferences.PreferenceHelper
 import com.bbdev.app.fundstubclientapp.util.AppConstants
 
 /**

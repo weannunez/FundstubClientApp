@@ -2,7 +2,7 @@ package com.bbdev.app.fundstubclientapp.ui.splash.presenter
 
 import android.text.TextUtils
 import com.bbdev.app.fundstubclientapp.App
-import com.bbdev.app.fundstubclientapp.data.dataclass.User
+import com.bbdev.app.fundstubclientapp.data.dataclass.models.Users
 import com.bbdev.app.fundstubclientapp.ui.splash.authmanager.AuthManager
 import com.bbdev.app.fundstubclientapp.ui.splash.view.SplashMVPView
 import javax.inject.Inject
@@ -54,7 +54,7 @@ class SplashPresenter: SplashMVPPresenter {
 
     }
 
-    private fun saveUser(user: User) {
+    private fun saveUser(user: Users) {
         authManager.saveUserInputData(user).addOnCompleteListener {
             if (it.isSuccessful){
                 view.openHomeActivity()
@@ -69,8 +69,8 @@ class SplashPresenter: SplashMVPPresenter {
        view.showProgress()
        authManager.performCreateNewUser(email, password, name).addOnCompleteListener {
             if (it.isSuccessful){
-                val uid = it.result!!.user.uid
-                val user = User(uid, email, name)
+              val uid = it.result!!.user.uid
+                val user = Users("", "", "")
                 saveUser(user)
             }else{
                 view.showError(it.exception.toString())

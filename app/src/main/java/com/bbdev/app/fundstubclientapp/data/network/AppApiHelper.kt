@@ -3,9 +3,6 @@ package com.bbdev.app.fundstubclientapp.data.network
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.rx2androidnetworking.Rx2AndroidNetworking
-import io.reactivex.Observable
-import javax.inject.Inject
 
 /**
  * Created by wn 04/01000.

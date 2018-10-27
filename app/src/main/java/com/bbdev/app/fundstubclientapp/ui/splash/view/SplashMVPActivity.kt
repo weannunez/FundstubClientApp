@@ -9,7 +9,7 @@ import android.view.animation.BounceInterpolator
 import android.widget.Toast
 import com.bbdev.app.fundstubclientapp.App
 import com.bbdev.app.fundstubclientapp.R
-import com.bbdev.app.fundstubclientapp.data.dataclass.User
+import com.bbdev.app.fundstubclientapp.data.dataclass.models.Users
 import com.bbdev.app.fundstubclientapp.ui.base.view.BaseActivity
 import com.bbdev.app.fundstubclientapp.ui.home.HomeActivity
 import com.bbdev.app.fundstubclientapp.ui.login.LoginActivity
@@ -139,7 +139,7 @@ class SplashMVPActivity : BaseActivity(), SplashMVPView {
         valueAnimator.start()
     }
 
-    override fun showUserInfo(user: User) {
+    override fun showUserInfo(user: Users) {
 
     }
 

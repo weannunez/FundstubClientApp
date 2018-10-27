@@ -1,4 +1,4 @@
-package com.bbdev.app.fundstubclientapp.data.preferences
+package com.bbdev.app.fundstubclientapp.ui.base.preferences
 
 import android.content.Context
 import android.content.SharedPreferences

@@ -13,6 +13,10 @@ object AppConstants {
     internal val EMPTY_PASSWORD_ERROR = 1003
     internal val LOGIN_FAILURE = 1004
     internal val NULL_INDEX = -1L
+    internal const val BASE_URL = "https://app.ticketmaster.com"
+    internal const val api_key = "QZJQuDTgl2q7QY8J0I5Z6gBFcuB9zaK9"
+    internal const val events_query = "/events"
+    internal const val userApi_Key = "KOudn7HEuRkRZI9Pay7GKRXQcIbkVm2aQINdS3up3vCszRUNuuncfKzZjoND4iYa"
 
     enum class LoggedInMode constructor(val type: Int) {
         LOGGED_IN_MODE_LOGGED_OUT(0),

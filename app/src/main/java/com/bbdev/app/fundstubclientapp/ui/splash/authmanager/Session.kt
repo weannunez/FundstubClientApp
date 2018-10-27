@@ -1,8 +1,8 @@
 package com.bbdev.app.fundstubclientapp.ui.splash.authmanager
 
-import com.bbdev.app.fundstubclientapp.data.dataclass.User
+import com.bbdev.app.fundstubclientapp.data.dataclass.models.Users
 
 interface Session{
 
-    fun getCurrentUser(): User?
+    fun getCurrentUser(): Users?
 }

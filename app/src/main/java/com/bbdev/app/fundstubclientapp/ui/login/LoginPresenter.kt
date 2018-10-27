@@ -2,9 +2,7 @@ package com.bbdev.app.fundstubclientapp.ui.login
 
 import android.text.TextUtils
 import com.bbdev.app.fundstubclientapp.App
-import com.bbdev.app.fundstubclientapp.data.dataclass.User
 import com.bbdev.app.fundstubclientapp.ui.splash.authmanager.AuthManager
-import org.w3c.dom.Text
 import javax.inject.Inject
 
 

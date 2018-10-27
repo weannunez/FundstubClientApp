@@ -2,7 +2,7 @@ package com.bbdev.app.fundstubclientapp.ui.splash.authmanager
 
 
 import com.bbdev.app.fundstubclientapp.App
-import com.bbdev.app.fundstubclientapp.data.dataclass.User
+import com.bbdev.app.fundstubclientapp.data.dataclass.models.Users
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -42,14 +42,14 @@ class AuthManager private constructor(){
         }
     }
 
-    fun isCurrentUserAuth(): User? = session.getCurrentUser()
+    fun isCurrentUserAuth(): Users? = session.getCurrentUser()
 
 
     fun logout(){
         fireBaseAuth.signOut()
     }
 
-    fun saveUserInputData(user: User):Task<Void> {
+    fun saveUserInputData(user: Users):Task<Void> {
         return firebaseDatabase.getReference("writes/${user.uid}/registrationData/").setValue(user)
     }
     fun performSignIn(email: String, password: String): Task<AuthResult> {

@@ -6,13 +6,22 @@ import com.google.gson.annotations.SerializedName
 /**
  * Created by wn 14/01000.
  */
+
 data class OpenSourceResponse(@Expose
-                              @SerializedName("status_code")
-                              private var statusCode: String? = null,
+                              @SerializedName("name")
+                              private var name: String? = null,
 
                               @Expose
-                              @SerializedName("message")
-                              private var message: String? = null,
+                              @SerializedName("id")
+                              private var eventId: String? = null,
+
+                              @Expose
+                              @SerializedName("url")
+                              private var url: String? = null,
+
+                              @Expose
+                              @SerializedName("type")
+                              private var type: String? = null,
 
                               @Expose
                               @SerializedName("data")

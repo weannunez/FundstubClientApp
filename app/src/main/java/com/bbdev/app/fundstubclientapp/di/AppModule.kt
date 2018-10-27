@@ -2,7 +2,8 @@ package com.bbdev.app.fundstubclientapp.di
 
 import android.app.Application
 import android.content.Context
-import com.bbdev.app.fundstubclientapp.data.dataclass.User
+import com.bbdev.app.fundstubclientapp.data.dataclass.models.Users
+import com.bbdev.app.fundstubclientapp.data.dataclass.models.Sports
 import com.bbdev.app.fundstubclientapp.ui.home.HomeMvpPresenter
 import com.bbdev.app.fundstubclientapp.ui.home.HomePresenter
 import com.bbdev.app.fundstubclientapp.ui.splash.authmanager.AuthManager
@@ -15,7 +16,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class AppModule(private val application: Application){
+class AppModule(private val application: Application) {
 
 
     @Provides
@@ -26,12 +27,12 @@ class AppModule(private val application: Application){
     }
 
     @Provides
-    fun providesAuthManager(): AuthManager{
+    fun providesAuthManager(): AuthManager {
         return AuthManager.instance
     }
 
     @Provides
-    fun provideSplashPresenter(): SplashMVPPresenter{
+    fun provideSplashPresenter(): SplashMVPPresenter {
         return SplashPresenter()
     }
 
@@ -39,15 +40,22 @@ class AppModule(private val application: Application){
     fun provideHomePresenter(): HomeMvpPresenter {
         return HomePresenter()
     }
+
     @Provides
-    fun provideUser(): User? = AuthManager.instance.isCurrentUserAuth()
+    fun provideSportsModel(): Sports? {
+        return Sports()
+
+    }
+
+    @Provides
+    fun provideUser(): Users? = AuthManager.instance.isCurrentUserAuth()
+
 
     @Provides
     fun provideSession(): Session = getSession()
 
-    open fun getSession(): Session{
+    open fun getSession(): Session {
         return FirebaseSession()
     }
-
 
 }
